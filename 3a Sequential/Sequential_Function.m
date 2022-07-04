@@ -1,6 +1,7 @@
+function [tSeq] = Function_Sequential(num_hour,sub_set_data)
 %% This script allows you to open and explore the data in a *.nc file
-clear all
-close all
+%clear all
+%close all
 
 FileName = 'D:/Downloads/Model/Model/o3_surface_20180701000000.nc';
 
@@ -24,7 +25,7 @@ NumLat = 400; % number of latitude locations ot load
 StartLon = 1; % longitude location to start loading
 NumLon = 700; % number of longitude locations ot load
 tic
-for NumHour = 1:25 % loop through each hour
+for NumHour = 1: num_hour %:25 % loop through each hour
     fprintf('Processing hour %i\n', NumHour)
     DataLayer = 1; % which 'layer' of the array to load the model data into
     for idx = [1, 2, 4, 5, 6, 7, 8] % model data to load
@@ -38,11 +39,11 @@ for NumHour = 1:25 % loop through each hour
     % our customer. You are not required to understand this method, but you
     % can ask your module leader for more information if you wish.
     [Data2Process, LatLon] = PrepareData(HourlyData, Lat, Lon);
-    
+ 
     %% Sequential analysis    
     t1 = toc;
     t2 = t1;
-    for idx = 1: size(Data2Process,1) % step through each data location to process the data
+    for idx = 1:sub_set_data %size(Data2Process,1) % step through each data location to process the data
         
         % The analysis of the data creates an 'ensemble value' for each
         % location. This method is defined by
@@ -67,3 +68,4 @@ end
 tSeq = toc;
 
 fprintf('Total time for sequential processing = %.2f s\n\n', tSeq)
+

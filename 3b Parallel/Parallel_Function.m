@@ -1,16 +1,15 @@
-function ParallelProcessing
+function [PoolSize , sub_Data2Process, T3] = Function_ParallelProcessing(workers, sub_Data2Process)
 %% 1: Load Data
-clear all
-close all
+%clear all
+%close all
 
 FileName = 'D:/Downloads/Model/Model/o3_surface_20180701000000.nc';
-
 
 Contents = ncinfo(FileName);
 
 Lat = ncread(FileName, 'lat');
 Lon = ncread(FileName, 'lon');
-NumHours = 5;
+NumHours = 1;
 
 %% 2: Processing parameters
 % ##  provided by customer  ##
@@ -33,7 +32,7 @@ EnsembleVectorPar = zeros(NumLocations, NumHours); % pre-allocate memory
 % We use an index named 'NumHour' in our loop
 % The section 'parallel processing' will process the data location one
 % after the other, reporting on the time involved.
-Num2Process = 1000;
+Num2Process = 250;
 Steps = 100;
 tic
 for idxTime = 1:NumHours
@@ -68,7 +67,7 @@ for idxTime = 1:NumHours
     
 %% Parallel Analysis
     %% 7: Create the parallel pool and attache files for use
-    PoolSize = 4 ; % define the number of processors to use in parallel
+    PoolSize = workers ; % define the number of processors to use in parallel
     if isempty(gcp('nocreate'))
         parpool('local',PoolSize);
     end
@@ -100,7 +99,7 @@ for idxTime = 1:NumHours
     % this being a 'big data' project due to the processing time (not the
     % pure volume of raw data alone).
     T4 = toc;
-    parfor idx = 1: Num2Process % size(Data2Process,1)
+    parfor idx = 1: sub_Data2Process %Num2Process % size(Data2Process,1)
         [EnsembleVectorPar(idx, idxTime)] = EnsembleValue(Data2Process(idx,:,:,:), LatLon, RadLat, RadLon, RadO3);
         if idx/Steps == ceil(idx/Steps)
             send(DataQ, idx/Steps);
