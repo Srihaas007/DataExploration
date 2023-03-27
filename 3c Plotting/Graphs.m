@@ -30,8 +30,8 @@ legend('250 Data', '5,000 Data')
 
 %% Show two plots on same y-axis
 %% Mean processing time
-y1MeanVals = y1Vals / 250;
-y2MeanVals = y2Vals / 5000;
+y1MeanVals = y1Vals / 500;
+y2MeanVals = y2Vals / 1000;
 
 figure(2)
 plot(x1Vals, y1MeanVals, '-bd')
