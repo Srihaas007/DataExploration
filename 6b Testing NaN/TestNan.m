@@ -9,7 +9,7 @@ close all
 %% Test a good file
 NaNErrors = 0;
 %% Set file to test
-FileName = 'D:/Downloads/Model/Model/o3_surface_20180701000000.nc';; % define our test file
+FileName = 'D:/Downloads/Model/o3_surface_20180701000000.nc';; % define our test file
 
 Contents = ncinfo(FileName); % Store the file content information in a variable.
 
@@ -43,7 +43,7 @@ end
 %% Test File with Errors
 NaNErrors = 0;
 %% Set file to test
-FileName = 'D:/Downloads/Model/Model/TestFileNaN.nc'; % define our test file
+FileName = 'D:/Downloads/Model/TestFileNaN.nc'; % define our test file
 
 Contents = ncinfo(FileName); % Store the file content information in a variable.
 
