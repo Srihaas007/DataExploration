@@ -24,7 +24,7 @@ NumLat = 400; % number of latitude locations ot load
 StartLon = 1; % longitude location to start loading
 NumLon = 700; % number of longitude locations ot load
 tic
-for NumHour = 1:25 % loop through each hour
+for NumHour = 1:1 % loop through each hour
     fprintf('Processing hour %i\n', NumHour)
     DataLayer = 1; % which 'layer' of the array to load the model data into
     for idx = [1, 2, 4, 5, 6, 7, 8] % model data to load
@@ -42,7 +42,7 @@ for NumHour = 1:25 % loop through each hour
     %% Sequential analysis    
     t1 = toc;
     t2 = t1;
-    for idx = 1: size(Data2Process,1) % step through each data location to process the data
+    for idx = 1: 10000 % step through each data location to process the data
         
         % The analysis of the data creates an 'ensemble value' for each
         % location. This method is defined by
