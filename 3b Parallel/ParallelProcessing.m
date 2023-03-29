@@ -67,7 +67,7 @@ for idxTime = 1:1
     
 %% Parallel Analysis
     %% 7: Create the parallel pool and attache files for use
-    PoolSize = 2 ; % define the number of processors to use in parallel
+    PoolSize = 2; % define the number of processors to use in parallel
     if isempty(gcp('nocreate'))
         parpool('local',PoolSize);
     end
@@ -99,7 +99,7 @@ for idxTime = 1:1
     % this being a 'big data' project due to the processing time (not the
     % pure volume of raw data alone).
     T4 = toc;
-    parfor idx = 1: 500 % size(Data2Process,1)
+    parfor idx = 1:2000 % size(Data2Process,1)
         [EnsembleVectorPar(idx, idxTime)] = EnsembleValue(Data2Process(idx,:,:,:), LatLon, RadLat, RadLon, RadO3);
         if idx/Steps == ceil(idx/Steps)
             send(DataQ, idx/Steps);
