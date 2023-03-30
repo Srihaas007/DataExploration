@@ -1,13 +1,13 @@
-# 5011CEM_20-21
-Matlab code for 5011CEM 20/21
+This code is a MATLAB script that performs several data processing and analysis tasks related to atmospheric ozone concentrations. Here is a brief overview of the different parts of the code:
 
-The repository contains the code files for 5011CEM delivered in semester 2, starting January 2022.
+The first section of the code reads in a netCDF file containing ozone concentration data for a specific date and time. It loads the latitude and longitude coordinates, as well as various radius values and other parameters that will be used later in the script.
 
-This module is delivered using flipped learning. This means that there are recorded 'lectures' providing the overview of the learning material. There are then tasks which shold be completed. This repository contains the Matlab code used for these tasks.
-The scheduled teaching slots with tutors are to be run as tutorial sessions. You should arrive at these sessions having completed your tasks as well as you can, and use these sessions for additional learning around the topics
+The second section of the code performs some initial checks on the data in the netCDF file, making sure that all of the data is numeric and that there are no NaN values. If any of these checks fail, the script will stop executing.
 
-Each folder contains code for a separate task, numbered by teaching session.
-The folder 'Common Files' contains code that is common between sessions.
-The folder 'Model' is empty at this time. you will be provided with 3 data files separately to download and save to this location.
+The third section of the code calls a function called Sequential_Function with different values of a parameter called SizeLoop. This function is responsible for processing the ozone concentration data in a sequential (i.e., non-parallel) manner, using a sliding window approach. The output of this function is a time value that represents the amount of time it took to process the data using the given value of SizeLoop.
 
-It is recommended that you retain the folder structure, and add all the folders to your Matlab path. the easiest way to do this is to select the top levbel folder, right click and select 'add to path' -> selected folders and subfolders.
+The fourth section of the code calls a function called Parallel_Function with different values of two parameters: Num2ProcessList and poolSize. This function is similar to Sequential_Function, but it processes the data in a parallel manner using a specified number of worker processes (poolSize). The output of this function is also a time value.
+
+The final section of the code combines the output from the previous sections and creates a graph that compares the processing time for the different values of SizeLoop and Num2ProcessList with the different values of poolSize. The graph is saved to a file called "MainFunction.png".
+
+Overall, this script demonstrates how to load and process large amounts of atmospheric data using both sequential and parallel processing techniques in MATLAB.
