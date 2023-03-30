@@ -17,9 +17,10 @@ nccreate(FileOut, 'hour', 'Dimensions', {'hour', 25}, 'DataType', 'single');
 ncwrite(FileOut, 'hour', ncread(FileIn, 'hour'));
 
 Model2Change = 6; % Select the model that will be overwritten with errors
+Model3Change = 3; % Select the second model that will be overwritten with errors
 
 for idx = 1:7
-    if idx ~= Model2Change 
+     if idx ~= Model2Change && idx ~= Model3Change
         Var = ncread(FileIn, VarNames{idx});
         nccreate('TestyTest.nc', VarNames{idx},...
             'Dimensions', { 'lon', 700, 'lat', 400, 'hour', 25},...
