@@ -17,7 +17,7 @@ NumLon = 700; % number of longitude locations ot load
 StartHour =1; 
 EndHour = 1;
 NumHours = 1; 
-Data=[2000,1000];
+Data=[200,500];
 %% Before processing
 %Create and open log file
 LogFileName = './MainFunction.txt';
@@ -51,16 +51,16 @@ x11 = [];
 y11 = [];
 x21 = [];
 y21 = [];
-SizeLoop = [100,200];
+SizeLoop = [200,500];
 % Loop through the values in SizeLoop
 for i = 1:length(SizeLoop)
     % Call the Sequential_Function with current SizeLoop value
     [tSeq] = Sequential_Function(FileName, SizeLoop(i), Lat, Lon, RadLat, RadLon, RadO3, StartLat, NumLat, StartLon, NumLon, StartHour, EndHour);
     % Store the output in the corresponding arrays based on SizeLoop value
-    if SizeLoop(i) == 100
+    if SizeLoop(i) == 200
         x11 = [x11 tSeq];
         y11 = [y11 tSeq];
-    elseif SizeLoop(i) == 200
+    elseif SizeLoop(i) == 500
         x21 = [x21 tSeq];
         y21 = [y21 tSeq];
     end
@@ -80,7 +80,7 @@ x23 = [];
 y23 = [];
 x24 = [];
 y24 = [];
-Num2ProcessList = [100,200];
+Num2ProcessList = [200,500];
 % Loop through the values in Num2ProcessList
 for i = 1:length(Num2ProcessList)
     % Loop through the poolSize values
@@ -88,7 +88,7 @@ for i = 1:length(Num2ProcessList)
         % Call the Parallel_Function with current inputs
         [Time] = Parallel_Function(RadLat,RadLon,RadO3,StartLat,NumLat,StartLon,NumLon,poolSize,StartHour,NumHours,Num2ProcessList(i),FileName,Contents,Lat,Lon);
         % Store the output in the corresponding arrays based on Num2ProcessList and poolSize values
-        if Num2ProcessList(i) == 100
+        if Num2ProcessList(i) == 200
             if poolSize == 2
                 x12 = [x12 Time];
                 y12 = [y12 Num2ProcessList(i)];
@@ -99,7 +99,7 @@ for i = 1:length(Num2ProcessList)
                 x14 = [x14 Time];
                 y14 = [y14 Num2ProcessList(i)];
             end
-        elseif Num2ProcessList(i) == 200
+        elseif Num2ProcessList(i) ==500
             if poolSize == 2
                 x22 = [x22 Time];
                 y22 = [y22 Num2ProcessList(i)];
@@ -121,7 +121,7 @@ x1Vals = [x11, x12, x13, x14];
 y1Vals = [y11, y12, y13, y14];
 x2Vals = [x21, x22, x23, x24];
 y2Vals = [y21, y22, y23, y24];
-legendLabels = "100_data 200_data";
+legendLabels = "200_data 500_data";
 Graphs_function(x1Vals, y1Vals, x2Vals, y2Vals, legendLabels)
 
 

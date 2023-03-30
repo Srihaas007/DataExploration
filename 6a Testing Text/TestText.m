@@ -47,7 +47,7 @@ end
     end
 
     %% display data types
-    DataInFile = DataTypes(datatype)'
+    DataInFile = DataTypes(datatype)';
 
     %% find character data types
     FindText = strcmp('NC_Char', DataInFile);
