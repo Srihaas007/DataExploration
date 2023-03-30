@@ -21,7 +21,7 @@ Model3Change = 3; % Select the second model that will be overwritten with errors
 
 for idx = 1:7
     %Using AND statement instead of OR so I don't have to swap the if and else statements
-    if idx ~= Model2Change & idx ~= Model3Change 
+    if idx ~= Model2Change && idx ~= Model3Change 
         Var = ncread(FileIn, VarNames{idx});
         nccreate('TestyTest.nc', VarNames{idx},...
             'Dimensions', { 'lon', 700, 'lat', 400, 'hour', 25},...
