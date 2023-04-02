@@ -67,7 +67,7 @@ for StartHour = 1:25
     HourMem = max( [ HourMem, whos('HourlyData').bytes/1000000 ] );
     fprintf('Loaded Hour %i, memory used: %.3f MB\n', StartHour, HourMem); % display loading information
 end
-
+%%Created functions
 %% Section 5: Print our results
 fprintf('\nResults:\n')
 fprintf('Memory used for all data: %.2f MB\n', AllDataMem)
