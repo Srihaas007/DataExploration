@@ -50,3 +50,4 @@ Data = ncread(FileName, 'chimere_ozone', [StartLon, StartLat, StartHour], [NumLo
 for idx = [1, 2, 4, 5, 6, 7, 8]
     fprintf('Model %i : %s\n', idx, Contents.Variables(idx).Name);
 end
+%%Explored the data
